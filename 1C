@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+#include <chrono>
+
+std::string paises[195]{
+    "Afganistán",	"Albania",	"Alemania",	"Andorra",	"Angola",	"Antigua y Barbuda",	"Arabia Saudita",	"Argelia",	"Argentina",	"Armenia",	"Australia",	"Austria",	"Azerbaiyán",	"Bahamas",	"Bangladés",	"Barbados",	"Baréin",	"Bélgica",	"Belice",	"Benín",	"Bielorrusia",	"Birmania",	"Bolivia",	"Bosnia y Herzegovina",	"Botsuana",	"Brasil",	"Brunéi",	"Bulgaria",	"Burkina Faso",	"Burundi",	"Bután",	"Cabo Verde",	"Camboya",	"Camerún",	"Canadá",	"Catar",	"Chad",	"Chile",	"China",	"Chipre",	"Colombia",	"Comoras",	"Corea del Norte",	"Corea del Sur",	"Costa de Marfil",	"Costa Rica",	"Croacia",	"Cuba",	"Dinamarca",	"Dominica",	"Ecuador",	"Egipto",	"El Salvador",	"Emiratos Árabes Unidos",	"Eritrea",	"Eslovaquia",	"Eslovenia",	"España",	"Estados Unidos",	"Estonia",	"Esuatini",	"Etiopía",	"Filipinas",	"Finlandia",	"Fiyi",	"Francia",	"Gabón",	"Gambia",	"Georgia",	"Ghana",	"Granada",	"Grecia",	"Guatemala",	"Guyana",	"Guinea",	"Guinea-Bisáu",	"Guinea Ecuatorial",	"Haití",	"Honduras",	"Hungría",	"India",	"Indonesia",	"Irak",	"Irán",	"Irlanda",	"Islandia",	"Islas Marshall",	"Islas Salomón",	"Israel",	"Italia",	"Jamaica",	"Japón",	"Jordania",	"Kazajistán",	"Kenia",	"Kirguistán",	"Kiribati",	"Kuwait",	"Laos",	"Lesoto",	"Letonia",	"Líbano",	"Liberia",	"Libia",	"Liechtenstein",	"Lituania",	"Luxemburgo",	"Macedonia del Norte",	"Madagascar",	"Malasia",	"Malaui",	"Maldivas",	"Malí",	"Malta",	"Marruecos",	"Mauricio",	"Mauritania",	"México",	"Micronesia",	"Moldavia",	"Mónaco",	"Mongolia",	"Montenegro",	"Mozambique",	"Namibia",	"Nauru",	"Nepal",	"Nicaragua",	"Níger",	"Nigeria",	"Noruega",	"Nueva Zelanda",	"Omán",	"Países Bajos",	"Pakistán",	"Palaos",	"Palestina",	"Panamá",	"Papúa Nueva Guinea",	"Paraguay",	"Perú",	"Polonia",	"Portugal",	"Reino Unido",	"República Centroafricana",	"República Checa",	"República del Congo",	"República Democrática del Congo",	"República Dominicana",	"Ruanda",	"Rumania",	"Rusia",	"Samoa",	"San Cristóbal y Nieves",	"San Marino",	"San Vicente y las Granadinas",	"Santa Lucía",	"Santo Tomé y Príncipe",	"Senegal",	"Serbia",	"Seychelles",	"Sierra Leona",	"Singapur",	"Siria",	"Somalia",	"Sri Lanka",	"Sudáfrica",	"Sudán",	"Sudán del Sur",	"Suecia",	"Suiza",	"Surinam",	"Tailandia",	"Tanzania",	"Tayikistán",	"Timor Oriental",	"Togo",	"Tonga",	"Trinidad y Tobago",	"Túnez",	"Turkmenistán",	"Turquía",	"Tuvalu",	"Ucrania",	"Uganda",	"Uruguay",	"Uzbekistán",	"Vanuatu",	"Vaticano",	"Venezuela",	"Vietnam",	"Yemen",	"Yibuti",	"Zambia",	"Zimbabue"
+};
+
+void rellenar_Paises(){
+    int k=0;
+    for (int i=0;i<195;i++)
+    {
+        for (int j=0;j<195;j++)
+        {
+            rellenar_Paises[k]=paises[i];
+             k++;
+        }
+    }
+}
+
+void imprimirPaises()
+{
+    for (int k=0;k<195;k++)
+    {
+        cout << paises[k] <<endl;
+    }
+}
+
+int main() {
+    std::cout << "Ejercicio 1 inciso a "
+              << std::endl;
+    
+    auto inicio = 
+        std::chrono::high_resolution_clock::now();
+    rellenar_Paises();
+    auto medio = 
+        std::chrono::high_resolution_clock::now();
+    imprimirPaises();
+    auto fin = 
+        std::chrono::high_resolution_clock::now();
+
+    auto duracion1 = 
+        std::chrono::duration_cast<std::chrono::microseconds>
+        (medio - inicio);
+
+    auto duracion2 = 
+        std::chrono::duration_cast<std::chrono::microseconds>
+        (fin - medio);
+
+    std::cout 
+        << "Tiempo de Generacion de Paises " 
+        << duracion1.count() << " microsegundos" 
+        << std::endl;
+    
+    std::cout 
+        << "Tiempo de Impresion de Paises " 
+        << duracion2.count() << " microsegundos" 
+        << std::endl;
+
+    return 0;
+}
