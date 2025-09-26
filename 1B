@@ -1,0 +1,38 @@
+#include <iostream>
+#include <chrono>
+using namespace std;
+
+double precioMinLLamada[5];
+void CargaPlan(){
+     precioMinLLamada[0] = 0.2;
+     precioMinLLamada[1] = 0.5;
+     precioMinLLamada[2] = 0.7;
+     precioMinLLamada[3] = 0.1;
+     precioMinLLamada[4] = 1.2;
+}
+
+void Imprimaplan(){
+    cout<<"Plan 0: "<<precioMinLLamada[0]<<endl;
+    cout<<"Plan 1: "<<precioMinLLamada[1]<<endl;
+    cout<<"Plan 2: "<<precioMinLLamada[2]<<endl;
+    cout<<"Plan 3: "<<precioMinLLamada[3]<<endl;
+    cout<<"Plan 4: "<<precioMinLLamada[4]<<endl;
+    
+}
+
+int main() {
+    
+    auto inicio = chrono: :high resolution clock:: now;
+    precioMinLLamada();
+    auto medio = chrono: :high_resolution_clock: :now;
+    imprimaplan;
+    auto fin = chrono: :high_resolution_clock: :now();
+    
+    auto duracion1 = chrono:: duration_cast«chrono: microseconds› (medio - inicio);
+    
+    auto duracion2 - chrono:: duration cast<chrono: microseconds>(fin - medio);
+
+cout « "Tiempo de Carga de Planes:" «< duracion1. count () «" microsegundos" «< endl; cout «‹ "Tiempo de Impresion de Planes:* «< dunacion2.count() ‹‹" microsegundos" « endl;
+
+    return 0;
+}
