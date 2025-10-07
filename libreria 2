@@ -1,0 +1,70 @@
+#ifndef EJERCICIO2_H
+#define EJERCICIO2_H
+
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+using namespace std;
+
+//CLIENTE
+
+extern int detalleCliente[1000][3];  
+
+void llamarDC();
+void imprimirDC();
+
+// SERVICIO TELEFÓNICO
+
+extern int servicio_tel[1200][3];  
+
+void llamarST();
+void imprimirST();
+
+//  CLIENTE 
+int detalleCliente[1000][3];  
+
+void llamarDC() {
+    for (int i = 0; i < 1000; i++) {
+        detalleCliente[i][0] = rand() % 2;           
+        detalleCliente[i][1] = rand() % 83 + 1943;  
+        detalleCliente[i][2] = rand() % 195;         
+    }
+}
+
+void imprimirDC() {
+    cout << "\n--- DETALLE CLIENTE ---\n";
+    cout << "IDCLIENTE\tSEXO\tAÑO_NAC\tPAIS\n";
+    for (int i = 0; i < 1000; i++) {
+        cout << i << "\t\t" 
+             << detalleCliente[i][0] << "\t" 
+             << detalleCliente[i][1] << "\t" 
+             << detalleCliente[i][2] << endl;
+    }
+}
+
+//  TELEFONO
+
+int servicio_tel[1200][3];  
+
+void llamarST() {
+    for (int i = 0; i < 1200; i++) {
+        servicio_tel[i][0] = ((rand() % 2 + 6) * 10000000) +
+                             (rand() % (9999999 - 1000000 + 1) + 1000000);
+
+        servicio_tel[i][1] = (rand() % 5);
+        servicio_tel[i][2] = rand() % 1000;
+    }
+}
+
+void imprimirST() {
+ 
+    cout << "IDTELEFONO\tTELEFONO\tPLAN\tIDCLIENTE\n";
+    for (int i = 0; i < 1000; i++) {
+        cout << i << "\t\t" 
+             << servicio_tel[i][0] << "\t" 
+             << servicio_tel[i][1] << "\t" 
+             << servicio_tel[i][2] << endl;
+    }
+}
+
+#endif
