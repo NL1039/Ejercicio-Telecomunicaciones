@@ -1,0 +1,94 @@
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+#include <iomanip>
+#include "ejercicio1.h"
+#include "ejercicio2.h"
+using namespace std;
+
+int llamada[2000][14];
+
+void generarLlamadas() {
+    for (int i = 0; i < 2000; i++) {
+        llamada[i][0] = 2024;                
+        llamada[i][1] = 1 + rand() % 12;     
+        llamada[i][2] = 1 + rand() % 30;     
+        llamada[i][3] = 1 + rand() % 24;     
+        llamada[i][4] = 1 + rand() % 60;     
+        llamada[i][5] = rand() % 1200;       // ID teléfono origen
+        llamada[i][6] = rand() % 1200;       // ID teléfono destino
+        
+        while (llamada[i][5] == llamada[i][6]) {
+            llamada[i][6] = rand() % 1200;   
+        }
+
+        llamada[i][7] = 1 + rand() % 120;    // Duración llamada
+
+        int idClienteOrigen  = servicio_tel[llamada[i][5]][2]; // ID cliente origen
+        int idClienteDestino = servicio_tel[llamada[i][6]][2]; // ID cliente destino
+        int planOrigen       = servicio_tel[llamada[i][5]][1]; // Plan 
+
+        double precioPlan = PrecioMinLlamada[planOrigen];
+
+        llamada[i][8]  = idClienteOrigen;
+        llamada[i][9]  = idClienteDestino;
+        llamada[i][10] = planOrigen;
+        llamada[i][11] = static_cast<int>(precioPlan * 100); // precio 
+
+        double costo = precioPlan * llamada[i][7];
+        llamada[i][12] = static_cast<int>(costo * 100); // costo 
+    }
+}
+
+void imprimirLlamadas() {
+    cout << left
+         << setw(10) << "IdLlamada"
+         << setw(6)  << "Año"
+         << setw(5)  << "Mes"
+         << setw(5)  << "Dia"
+         << setw(6)  << "Hora"
+         << setw(6)  << "Min"
+         << setw(12) << "TelOrigen"
+         << setw(12) << "TelDestino"
+         << setw(8)  << "Dur"
+         << setw(10) << "IdCliOrg"
+         << setw(10) << "IdCliDest"
+         << setw(8)  << "Plan"
+         << setw(12) << "Precio"
+         << setw(12) << "Costo"
+         << endl;
+
+    for (int i = 0; i < 200; i++) { 
+        cout << left
+             << setw(10) << i
+             << setw(6)  << llamada[i][0]
+             << setw(5)  << llamada[i][1]
+             << setw(5)  << llamada[i][2]
+             << setw(6)  << llamada[i][3]
+             << setw(6)  << llamada[i][4]
+             << setw(12) << llamada[i][5]
+             << setw(12) << llamada[i][6]
+             << setw(8)  << llamada[i][7]
+             << setw(10) << llamada[i][8]
+             << setw(10) << llamada[i][9]
+             << setw(8)  << llamada[i][10]
+             << setw(12) << fixed << setprecision(2) << (llamada[i][11] / 100.0)
+             << setw(12) << fixed << setprecision(2) << (llamada[i][12] / 100.0)
+             << endl;
+    }
+}
+
+int main() {
+    srand(time(0));
+
+    rellenar_NombreCliente();
+    CargarPlan();
+    rellenar_estado();
+    llamarDC();
+    llamarST();
+
+    generarLlamadas();
+    imprimirLlamadas();
+
+    return 0;
+}
