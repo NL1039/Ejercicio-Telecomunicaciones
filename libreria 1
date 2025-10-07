@@ -1,0 +1,100 @@
+#ifndef EJERCICIO1_H
+#define EJERCICIO1_H
+
+#include <iostream>
+#include <string>
+#include <chrono>
+using namespace std;
+
+//  NOMBRES Y APELLIDOS
+
+extern string nombres[200];
+extern string apellidos[203];
+extern string NombreCliente[1000];
+
+void rellenar_NombreCliente();
+void imprimir_NombreCliente();
+
+// PLANES
+
+extern double PrecioMinLlamada[5];
+
+void CargarPlan();
+void imprimirPlan();
+
+//  PAISES
+
+extern string paises[195];
+
+void imprimirPaises();
+
+//  PENDIENTE/PAGADO
+
+extern string estados[2];
+
+void rellenar_estado();
+void imprimirEstados();
+
+//  NOMBRES Y APELLIDOS
+string nombres[200] = {"Adrián",	"Alejandro",	"Amalia",	"Ana",	"Arturo",	"Aurora",	"Beatriz",	"Bernardo",	"Berta",	"Blanca",	"Boris",	"Braulio",	"Camila",	"Carlos",	"Carmen",	"Carolina",	"Cayetano",	"César",	"Claudia",	"Cristian",	"Damian",	"Dana",	"Daniel ",	"Daniela ",	"Darla",	"David ",	"Denis ",	"Diego ",	"Dora ",	"Duvan",	"Dylan ",	"Eduardo ",	"Elvio",	"Elvira ",	"Emanuel",	"Emilia",	"Emilio ",	"Enrique ",	"Enriqueta",	"Erlan",	"Esmeralda",	"Esperanza",	"Estefania",	"Estela",	"Gabriel",	"Jacinta",	"Jairo",	"Javier",	"Jimena",	"Joaquín",	"Jordana",	"José",	"Juan",	"Julián",	"Julieta",	"Karen",	"Katerina",	"Kevin",	"Kiara",	"Kimberly",	"Konstantin",	"Laura",	"Leandro",	"Leonardo",	"Lucía",	"Luis",	"Luna",	"Magdalena",	"Manuel",	"Manuela",	"Marcela",	"Marcelo",	"Marcos",	"María",	"Marina",	"Mario",	"Marta",	"Martín",	"Mateo",	"Matías",	"Mauricio",	"Maximiliano",	"Melisa",	"Mercedes",	"Miguel",	"Moisés",	"Montserrat",	"Nadia",	"Nahuel",	"Nala",	"Nancy",	"Naomi",	"Napoleón",	"Natalia",	"Nayeli",	"Nelson",	"Nerea",	"Néstor",	"Nicanor",	"Nicolás",	"Nieves",	"Ninfa",	"Noah",	"Noel",	"Noemí",	"Nora",	"Nuria",	"Octavia",	"Octavio",	"Odalys",	"Odette",	"Ofelia",	"Olga",	"Olimpia",	"Olivia",	"Omar",	"Omero",	"Ona",	"Opal",	"Oprah",	"Orestes",	"Oriana",	"Oriel",	"Orlando",	"Oscar",	"Osvaldo",	"Otto",	"Pablo",	"Paola",	"Patricia",	"Paula",	"Paulina",	"Pedro",	"Pilar",	"Quentin",	"Querubín",	"Quetzalí",	"Quico",	"Quim",	"Quintín",	"Quirino",	"Ramírez",	"Ramón",	"Ramos",	"Raquel",	"Raúl",	"Rebeca",	"Reyes",	"Ricardo",	"Ríos",	"Rivera",	"Roberta",	"Roberto",	"Rocío",	"Rodríguez",	"Rojas",	"Rosa",	"Rubén",	"Ruiz",	"Salazar",	"Salinas",	"Salvador",	"Sánchez",	"Santana",	"Santiago",	"Santos",	"Sara",	"Sebastián",	"Sergio",	"Serrano",	"Sofía",	"Sonia",	"Soto",	"Suárez",	"Susana",	"Tadeo",	"Tania",	"Teodoro",	"Teresa",	"Timoteo",	"Tina",	"Tita",	"Tomás",	"Ulises",	"Unai",	"Uriel",	"Valentina",	"Valeria",	"Vicente",	"Victor",	"Viviana",	"Walter",	"Wilfredo",	"William",	"Xavier",	"Ximena",	"Xiomara",	"Yuri",	"Zenon",	"Zuleyka"};
+
+string apellidos[203]={"Abad",	"Aguilar",	"Alonso",	"Álvarez",	"Andrade",	"Arce",	"Balderas",	"Barrera",	"Bautista",	"Becerra",	"Bernal",	"Blázquez",	"Bravo",	"Cáceres",	"Calderón",	"Campos",	"Carrillo",	"Castillo",	"Castro",	"Cordero",	"Cruz",	"Dalot",	"Damasco",	"Dan",	"Davila",	"Diaz",	"Dibello",	"Dona",	"Duncan",	"Dunn",	"Duran",	"Echeverria",	"Echeverry",	"Eguez",	"Elorza",	"Equiz",	"Erviti",	"Escudero",	"Espina",	"Espinoza",	"Esteva",	"Fausto",	"Federer",	"Feixas",	"Fernandez",	"Ferrer",	"Figo",	"Figueroa",	"Foca",	"Freitas",	"Frinpong",	"Galindo",	"Gallardo",	"Gallego",	"García",	"Giménez",	"Godoy",	"Gómez",	"González",	"Guerrero",	"Gutiérrez",	"Harb",	"Henríquez",	"Hernández",	"Herrera",	"Hidalgo",	"Hinojosa",	"Holguín",	"Hoyos",	"Huerta",	"Hurtado",	"Ibáñez",	"Ibarra",	"Iglesias",	"Illescas",	"Infante",	"Iriarte",	"Isidro",	"Iturralde",	"Izquierdo",	"Jara",	"Jaramillo",	"Jáuregui",	"Jerez",	"Jiménez",	"Jordán",	"Juárez",	"Justo",	"Karam",	"Khan",	"Kim",	"Klein",	"Kovács",	"Krüger",	"Ledesma",	"López",	"Lozano",	"Luna",	"Macías",	"Maldonado",	"Manzano",	"Marín",	"Márquez",	"Martínez",	"Medina",	"Mena",	"Méndez",	"Mendoza",	"Mesa",	"Messi",	"Miranda",	"Montero",	"Montes",	"Montoya",	"Morales",	"Moreno",	"Muñoz",	"Nadal",	"Nájera",	"Naranjo",	"Narváez",	"Nava",	"Navarrete",	"Navarro",	"Navas",	"Nazario",	"Negrete",	"Negrón",	"Nicolás",	"Nieto",	"Noguera",	"Nolasco",	"Noriega",	"Novoa",	"Noya",	"Núñez",	"Ocampo",	"Ocaña",	"Oceguera",	"Ochoa",	"Ojeda",	"Oliva",	"Olivares",	"Olivera",	"Olmos",	"Olvera",	"Ontiveros",	"Ordóñez",	"Orellana",	"Oropeza",	"Orozco",	"Ortega",	"Ortiz",	"Osorio",	"Otero",	"Oviedo",	"Páez",	"Palacios",	"Pardo",	"Paredes",	"Parra",	"Peña",	"Pérez",	"Ponce",	"Quesada",	"Quevedo",	"Quezada",	"Quijano",	"Quintana",	"Quintero",	"Quiroga",	"Quiroz",	"Ramírez",	"Ramos",	"Ríos",	"Rivera",	"Rodríguez",	"Rojas",	"Romero",	"Ruiz",	"Talavera",	"Tapia",	"Tejada",	"Tirado",	"Toledo",	"Torres",	"Tovar",	"Trevino",	"Ugarte",	"Ulloa",	"Underhill",	"Uslar",	"Vargas",	"Vasquez",	"Vega",	"Wendroth",	"Wolf",	"Xu",	"Zambrana",	"Zamora",	"Zapata",	"Zavala",	"Zhang"};
+
+
+string NombreCliente[1000];
+
+void rellenar_NombreCliente() {
+    for (int i = 0; i < 1000; i++) {
+        NombreCliente[i] = nombres[i % 200] + " " + apellidos[i % 203];
+    }
+}
+
+void imprimir_NombreCliente() {
+    for (int i = 0; i < 1000; i++) {
+        cout << NombreCliente[i] << endl;
+    }
+}
+
+// PLANES
+double PrecioMinLlamada[5];
+
+void CargarPlan() {
+    PrecioMinLlamada[0] = 0.2;
+    PrecioMinLlamada[1] = 0.5;
+    PrecioMinLlamada[2] = 0.7;
+    PrecioMinLlamada[3] = 1.0;
+    PrecioMinLlamada[4] = 1.2;
+}
+
+void imprimirPlan() {
+    for (int i = 0; i < 5; i++) {
+        cout << "Plan [" << i << "]: " << PrecioMinLlamada[i] << " Bs/min" << endl;
+    }
+}
+
+// PAISES
+string paises[195]{
+    "Afganistán",	"Albania",	"Alemania",	"Andorra",	"Angola",	"Antigua y Barbuda",	"Arabia Saudita",	"Argelia",	"Argentina",	"Armenia",	"Australia",	"Austria",	"Azerbaiyán",	"Bahamas",	"Bangladés",	"Barbados",	"Baréin",	"Bélgica",	"Belice",	"Benín",	"Bielorrusia",	"Birmania",	"Bolivia",	"Bosnia y Herzegovina",	"Botsuana",	"Brasil",	"Brunéi",	"Bulgaria",	"Burkina Faso",	"Burundi",	"Bután",	"Cabo Verde",	"Camboya",	"Camerún",	"Canadá",	"Catar",	"Chad",	"Chile",	"China",	"Chipre",	"Colombia",	"Comoras",	"Corea del Norte",	"Corea del Sur",	"Costa de Marfil",	"Costa Rica",	"Croacia",	"Cuba",	"Dinamarca",	"Dominica",	"Ecuador",	"Egipto",	"El Salvador",	"Emiratos Árabes Unidos",	"Eritrea",	"Eslovaquia",	"Eslovenia",	"España",	"Estados Unidos",	"Estonia",	"Esuatini",	"Etiopía",	"Filipinas",	"Finlandia",	"Fiyi",	"Francia",	"Gabón",	"Gambia",	"Georgia",	"Ghana",	"Granada",	"Grecia",	"Guatemala",	"Guyana",	"Guinea",	"Guinea-Bisáu",	"Guinea Ecuatorial",	"Haití",	"Honduras",	"Hungría",	"India",	"Indonesia",	"Irak",	"Irán",	"Irlanda",	"Islandia",	"Islas Marshall",	"Islas Salomón",	"Israel",	"Italia",	"Jamaica",	"Japón",	"Jordania",	"Kazajistán",	"Kenia",	"Kirguistán",	"Kiribati",	"Kuwait",	"Laos",	"Lesoto",	"Letonia",	"Líbano",	"Liberia",	"Libia",	"Liechtenstein",	"Lituania",	"Luxemburgo",	"Macedonia del Norte",	"Madagascar",	"Malasia",	"Malaui",	"Maldivas",	"Malí",	"Malta",	"Marruecos",	"Mauricio",	"Mauritania",	"México",	"Micronesia",	"Moldavia",	"Mónaco",	"Mongolia",	"Montenegro",	"Mozambique",	"Namibia",	"Nauru",	"Nepal",	"Nicaragua",	"Níger",	"Nigeria",	"Noruega",	"Nueva Zelanda",	"Omán",	"Países Bajos",	"Pakistán",	"Palaos",	"Palestina",	"Panamá",	"Papúa Nueva Guinea",	"Paraguay",	"Perú",	"Polonia",	"Portugal",	"Reino Unido",	"República Centroafricana",	"República Checa",	"República del Congo",	"República Democrática del Congo",	"República Dominicana",	"Ruanda",	"Rumania",	"Rusia",	"Samoa",	"San Cristóbal y Nieves",	"San Marino",	"San Vicente y las Granadinas",	"Santa Lucía",	"Santo Tomé y Príncipe",	"Senegal",	"Serbia",	"Seychelles",	"Sierra Leona",	"Singapur",	"Siria",	"Somalia",	"Sri Lanka",	"Sudáfrica",	"Sudán",	"Sudán del Sur",	"Suecia",	"Suiza",	"Surinam",	"Tailandia",	"Tanzania",	"Tayikistán",	"Timor Oriental",	"Togo",	"Tonga",	"Trinidad y Tobago",	"Túnez",	"Turkmenistán",	"Turquía",	"Tuvalu",	"Ucrania",	"Uganda",	"Uruguay",	"Uzbekistán",	"Vanuatu",	"Vaticano",	"Venezuela",	"Vietnam",	"Yemen",	"Yibuti",	"Zambia",	"Zimbabue"
+};
+
+void imprimirPaises() {
+    for (int i = 0; i < 70; i++) { 
+        cout << paises[i] << endl;
+    }
+}
+
+// PEND/PAG
+string estados[2];
+
+void rellenar_estado() {
+    estados[0] = "Pendiente";
+    estados[1] = "Pagado";
+}
+
+void imprimirEstados() {
+    for (int i = 0; i < 2; i++) {
+        cout << "Estado [" << i << "]: " << estados[i] << endl;
+    }
+}
+
+#endif
